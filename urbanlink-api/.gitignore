@@ -1,0 +1,6 @@
+# Ignora a saída do build, MAS mantém o .jar: o Render usa o jar versionado (Aula 41)
+target/*
+!target/*.jar
+.idea/
+*.iml
+.vscode/
