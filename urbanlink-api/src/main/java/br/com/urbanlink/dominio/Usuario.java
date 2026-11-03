@@ -19,7 +19,6 @@ public class Usuario {
     @JsonProperty
     private double saldoPontos;
 
-    /** Construtor vazio: usado pelo Jackson e pelo DAO ao montar o objeto a partir do banco. */
     public Usuario() {
     }
 
@@ -46,7 +45,6 @@ public class Usuario {
     public double getSaldoPontos() { return saldoPontos; }
     public void setSaldoPontos(double saldoPontos) { this.saldoPontos = saldoPontos; }
 
-    /** Tipo exposto no JSON ("COMUM" ou "PREMIUM"); a subclasse sobrescreve (polimorfismo). */
     public String getTipo() {
         return "COMUM";
     }

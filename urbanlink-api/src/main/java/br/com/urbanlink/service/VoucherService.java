@@ -19,7 +19,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-/** Regras centrais do UrbanLink: conversão de pontos em voucher, uso, cancelamento e antifraude. */
 public class VoucherService {
 
     private static final int LIMITE_DIARIO_VOUCHERS = 5;
@@ -37,7 +36,6 @@ public class VoucherService {
         this.repositorioImpactos = repositorioImpactos;
     }
 
-    /** Valor do crédito e pontos são SEMPRE calculados aqui; o cliente só informa o percentual. */
     public Voucher converter(ConversaoRequest pedido) {
         String usuarioId = Validador.texto(pedido.getUsuarioId(), "usuarioId", 3, 20);
         String transporteId = Validador.texto(pedido.getTransporteId(), "transporteId", 3, 20);
@@ -56,7 +54,6 @@ public class VoucherService {
             throw new IllegalArgumentException("O transporte '" + transporte.getNome() + "' não aceita voucher.");
         }
 
-        // Antifraude: limite diário de vouchers por usuário
         LocalDateTime inicioDoDia = LocalDate.now().atStartOfDay();
         if (repositorioVouchers.contarEmitidosDesde(usuarioId, inicioDoDia) >= LIMITE_DIARIO_VOUCHERS) {
             System.out.println("[AUDITORIA] ANTIFRAUDE limite diário: usuario=" + usuarioId);
@@ -66,7 +63,6 @@ public class VoucherService {
         double pontos = transporte.calcularPontosNecessarios(percentual);
         double valor = transporte.calcularValorCredito(percentual);
 
-        // Polimorfismo: o usuário premium paga menos pontos e tem limite mensal de resgates
         boolean premium = usuario instanceof UsuarioPremium;
         if (premium) {
             UsuarioPremium up = (UsuarioPremium) usuario;
@@ -95,7 +91,6 @@ public class VoucherService {
         return voucher;
     }
 
-    /** Só o dono usa o voucher. Retorna null se o voucher não existir. */
     public Voucher utilizar(String codigo, String usuarioId) {
         String dono = Validador.texto(usuarioId, "usuarioId", 3, 20);
         Voucher voucher = repositorioVouchers.buscarPorCodigo(codigo);
@@ -122,7 +117,6 @@ public class VoucherService {
         return repositorioVouchers.buscarPorCodigo(codigo);
     }
 
-    /** Permite apenas CANCELADO (devolve os pontos) ou EXPIRADO, e só a partir de ATIVO. Retorna null se não existir. */
     public Voucher alterarStatus(String codigo, StatusVoucher novoStatus) {
         if (novoStatus == null) {
             throw new IllegalArgumentException("O campo 'status' é obrigatório.");
@@ -144,7 +138,6 @@ public class VoucherService {
         return repositorioVouchers.buscarPorCodigo(codigo);
     }
 
-    /** Remove o voucher; se ainda estava ATIVO, devolve os pontos. Retorna false se não existir. */
     public boolean remover(String codigo) {
         Voucher voucher = repositorioVouchers.buscarPorCodigo(codigo);
         if (voucher == null) {

@@ -12,10 +12,6 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Permite que o front-end (React/Vercel) consuma a API.
- * As origens permitidas vêm da variável de ambiente CORS_ORIGIN (separadas por vírgula).
- */
 @Component
 public class CorsFilter implements Filter {
 

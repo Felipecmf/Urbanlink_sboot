@@ -2,7 +2,6 @@ package br.com.urbanlink.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/** Corpo de POST /vouchers. Valor e pontos são calculados no servidor, nunca enviados pelo cliente. */
 public class ConversaoRequest {
 
     @JsonProperty

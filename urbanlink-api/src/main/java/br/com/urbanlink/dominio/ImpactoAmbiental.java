@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ImpactoAmbiental {
 
-    /** Uma árvore adulta absorve cerca de 22 kg de CO₂ por ano. */
     public static final double KG_CO2_POR_ARVORE_ANO = 22.0;
 
     @JsonProperty
@@ -53,7 +52,6 @@ public class ImpactoAmbiental {
         this.pontosInvestidos = pontosInvestidos;
     }
 
-    /** Nível de engajamento calculado a partir do CO₂ acumulado (aparece no JSON). */
     public String getNivel() {
         if (totalCo2Evitado >= 100) {
             return "CAMPEAO SUSTENTAVEL";

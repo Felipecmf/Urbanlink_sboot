@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Fornece conexões ao banco Oracle. URL, usuário e senha vêm de variáveis de ambiente
- * (DB_URL, DB_USER, DB_PASSWORD), para que a senha não fique no código nem no GitHub.
- */
 public class ConnectionFactory {
 
     public Connection getConnection() {

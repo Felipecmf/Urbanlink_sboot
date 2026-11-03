@@ -44,7 +44,6 @@ public class TransporteDAO implements RepositorioTransportes {
         }
     }
 
-    /** Atualiza dados cadastrais; o total de viagens processadas não é alterado aqui. */
     @Override
     public boolean atualizar(TransportePublico t) {
         String sql = "UPDATE transporte SET nome=?, modalidade=?, tarifa_base=?, co2_evitado=?, integrado=?, "

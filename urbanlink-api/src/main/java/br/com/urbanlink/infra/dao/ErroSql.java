@@ -2,7 +2,6 @@ package br.com.urbanlink.infra.dao;
 
 import java.sql.SQLException;
 
-/** Converte erros conhecidos do Oracle (ORA-xxxxx) em mensagens que o cliente da API entende. */
 class ErroSql {
 
     static RuntimeException traduzir(SQLException e) {

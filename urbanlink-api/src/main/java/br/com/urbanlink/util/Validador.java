@@ -2,7 +2,6 @@ package br.com.urbanlink.util;
 
 import java.util.UUID;
 
-/** Validações de entrada usadas pela camada service. Dados inválidos geram IllegalArgumentException. */
 public class Validador {
 
     public static String texto(String valor, String campo, int min, int max) {
@@ -30,7 +29,6 @@ public class Validador {
         return t;
     }
 
-    /** Retorna o CPF somente com dígitos, depois de validar os dígitos verificadores. */
     public static String cpf(String valor) {
         String digitos = valor == null ? "" : valor.replaceAll("[^0-9]", "");
         if (!cpfValido(digitos)) {
@@ -68,7 +66,6 @@ public class Validador {
         return true;
     }
 
-    /** Usa o id informado (validado) ou gera um novo com o prefixo, ex.: USR-1A2B3C4D. */
     public static String id(String valor, String prefixo) {
         if (valor == null || valor.trim().isEmpty()) {
             return gerarId(prefixo);

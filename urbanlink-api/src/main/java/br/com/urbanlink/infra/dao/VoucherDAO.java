@@ -101,7 +101,6 @@ public class VoucherDAO implements RepositorioVouchers {
         }
     }
 
-    /** O UPDATE condicional impede uso duplo do mesmo voucher em requisições simultâneas. */
     @Override
     public boolean marcarComoUtilizado(String codigo) {
         String sql = "UPDATE voucher SET status='UTILIZADO' WHERE codigo=? AND status='ATIVO' AND antifraude=1";

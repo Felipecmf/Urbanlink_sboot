@@ -33,7 +33,6 @@ public class TransporteService {
         return transporte;
     }
 
-    /** Retorna null se o transporte não existir. */
     public TransportePublico atualizar(String id, TransportePublico novo) {
         TransportePublico existente = repositorio.buscarPorId(id);
         if (existente == null) {
@@ -49,7 +48,6 @@ public class TransporteService {
         return repositorio.buscarPorId(id);
     }
 
-    /** Retorna null se o transporte não existir. */
     public TransportePublico atualizarIntegrado(String id, TransporteIntegrado novo) {
         TransportePublico existente = repositorio.buscarPorId(id);
         if (existente == null) {

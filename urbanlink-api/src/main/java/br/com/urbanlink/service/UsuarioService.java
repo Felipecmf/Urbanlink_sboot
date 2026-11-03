@@ -35,7 +35,6 @@ public class UsuarioService {
         return premium;
     }
 
-    /** Retorna null se o usuário não existir. */
     public Usuario atualizar(String id, Usuario novo) {
         Usuario existente = repositorio.buscarPorId(id);
         if (existente == null) {
@@ -52,7 +51,6 @@ public class UsuarioService {
         return repositorio.buscarPorId(id);
     }
 
-    /** Retorna null se o usuário não existir. Também serve para promover um usuário comum a premium. */
     public Usuario atualizarPremium(String id, UsuarioPremium novo) {
         Usuario existente = repositorio.buscarPorId(id);
         if (existente == null) {
@@ -88,7 +86,6 @@ public class UsuarioService {
         return repositorio.obterTodos();
     }
 
-    /** Retorna null se o usuário não existir. */
     public Usuario adicionarPontos(String id, Double pontos) {
         Usuario existente = repositorio.buscarPorId(id);
         if (existente == null) {

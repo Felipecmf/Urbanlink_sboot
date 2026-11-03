@@ -69,7 +69,6 @@ public class Voucher {
     public boolean isAntifraude() { return antifraude; }
     public void setAntifraude(boolean antifraude) { this.antifraude = antifraude; }
 
-    /** Marca o voucher como utilizado, se estiver ATIVO e aprovado no antifraude. */
     public void utilizar() {
         if (!antifraude) {
             throw new IllegalArgumentException("Voucher " + codigo + " bloqueado por suspeita de fraude.");

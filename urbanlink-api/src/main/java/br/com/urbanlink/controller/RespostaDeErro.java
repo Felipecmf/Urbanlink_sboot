@@ -3,7 +3,6 @@ package br.com.urbanlink.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-/** Monta as respostas de erro dos controllers (400 para dados inválidos, 500 para falhas inesperadas). */
 class RespostaDeErro {
 
     static ResponseEntity<Object> de(RuntimeException e) {

@@ -45,7 +45,6 @@ public class UsuarioDAO implements RepositorioUsuarios {
         }
     }
 
-    /** Atualiza dados cadastrais. Saldo e resgates do mês NÃO são alterados aqui. */
     @Override
     public boolean atualizar(Usuario u) {
         String sql = "UPDATE usuario SET nome=?, email=?, cpf=?, tipo=?, multiplicador_bonus=?, limite_resgates=?, "
@@ -125,7 +124,6 @@ public class UsuarioDAO implements RepositorioUsuarios {
         }
     }
 
-    /** Débito atômico: só debita se o saldo for suficiente (protege contra requisições simultâneas). */
     @Override
     public boolean debitar(String id, double pontos) {
         String sql = "UPDATE usuario SET saldo_pontos = saldo_pontos - ? WHERE id=? AND saldo_pontos >= ?";

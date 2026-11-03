@@ -62,7 +62,6 @@ public class VoucherController {
         }
     }
 
-    /** Converte pontos em voucher. */
     @PostMapping
     public ResponseEntity<Object> converter(@RequestBody ConversaoRequest pedido) {
         try {

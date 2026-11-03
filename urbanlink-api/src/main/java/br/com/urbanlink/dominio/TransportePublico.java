@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TransportePublico {
 
-    /** Taxa de conversão: 10 pontos = R$ 1,00. */
     public static final double TAXA_CONVERSAO = 10.0;
 
     @JsonProperty
@@ -58,13 +57,11 @@ public class TransportePublico {
     public boolean isIntegrado() { return integrado; }
     public void setIntegrado(boolean integrado) { this.integrado = integrado; }
 
-    /** Valor em R$ coberto por um percentual (maior que 0 e até 100) da tarifa. */
     public double calcularValorCredito(double percentualCobertura) {
         validarPercentual(percentualCobertura);
         return Numeros.arredondar(tarifaBase * (percentualCobertura / 100.0), 2);
     }
 
-    /** Pontos necessários para cobrir o percentual informado da tarifa. */
     public double calcularPontosNecessarios(double percentualCobertura) {
         return Numeros.arredondar(calcularValorCredito(percentualCobertura) * TAXA_CONVERSAO, 2);
     }

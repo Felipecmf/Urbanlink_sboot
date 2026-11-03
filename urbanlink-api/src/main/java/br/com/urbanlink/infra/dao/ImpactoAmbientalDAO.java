@@ -74,6 +74,17 @@ public class ImpactoAmbientalDAO implements RepositorioImpactos {
         }
     }
 
+    @Override
+    public boolean remover(String usuarioId) {
+        String sql = "DELETE FROM impacto_ambiental WHERE usuario_id=?";
+        try (Connection c = fabrica.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setString(1, usuarioId);
+            return ps.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw ErroSql.traduzir(e);
+        }
+    }
+
     private ImpactoAmbiental montar(ResultSet rs) throws SQLException {
         ImpactoAmbiental i = new ImpactoAmbiental();
         i.setUsuarioId(rs.getString("usuario_id"));

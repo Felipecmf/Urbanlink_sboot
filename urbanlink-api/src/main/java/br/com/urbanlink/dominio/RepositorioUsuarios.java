@@ -10,14 +10,12 @@ public interface RepositorioUsuarios {
 
     boolean remover(String id);
 
-    /** Retorna null se o usuário não existir. */
     Usuario buscarPorId(String id);
 
     ArrayList<Usuario> obterTodos();
 
     void depositar(String id, double pontos);
 
-    /** Débito atômico: retorna false (sem debitar) se o saldo for insuficiente. */
     boolean debitar(String id, double pontos);
 
     void registrarResgate(String id);

@@ -10,7 +10,6 @@ public interface RepositorioTransportes {
 
     boolean remover(String id);
 
-    /** Retorna null se o transporte não existir. */
     TransportePublico buscarPorId(String id);
 
     ArrayList<TransportePublico> obterTodos();
